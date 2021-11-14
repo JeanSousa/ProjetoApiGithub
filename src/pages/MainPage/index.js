@@ -14,16 +14,16 @@ const MainPage = () => {
       <Title>API Github</Title>
       <Form>
         <Input
-        placeholder="usuário"
-        value={login}
-        onChange={(event) => setLogin(event.target.value)} />
+          placeholder="usuário"
+          value={login}
+          onChange={(event) => setLogin(event.target.value)}
+        />
         <Button to={`/${login}/repositories`}>
           <MdSearch size={42} />
         </Button>
       </Form>
     </Container>
   );
-}
-
+};
 
 export default MainPage;

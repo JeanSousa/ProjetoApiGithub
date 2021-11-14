@@ -11,7 +11,6 @@ export const Container = styled.div`
   padding: 0 2rem;
 `;
 
-
 export const Logo = styled.img`
   width: 130px;
 `;
@@ -39,12 +38,11 @@ export const Input = styled.input`
   margin-right: 24px;
   padding: 0 24px;
 
-  &::placeholder {
+  &::placehoder {
     color: ${(props) => props.theme.colors.metalDark};
   }
 `;
 
-// button herda propriedades de Link
 export const Button = styled(Link)`
   display: flex;
   align-items: center;
@@ -53,11 +51,10 @@ export const Button = styled(Link)`
   background: transparent;
   width: 80px;
   height: 64px;
-  border: 3px solid  ${(props) => props.theme.colors.text};
+  border: 3px solid ${(props) => props.theme.colors.text};
   transition: background 0.3s;
 
   &:hover {
     background: ${(props) => props.theme.colors.container};
   }
-
 `;
