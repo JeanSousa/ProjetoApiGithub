@@ -1,83 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Profile from './Profile';
 import Filter from './Filter';
 import Repositories from './Repositories';
 
-import { Container, Sidebar, Main } from './styles';
-import { getLangsFrom } from '../../services/api';
+import { Loading, Container, Sidebar, Main } from './styles';
+import { getUser, getRepos, getLangsFrom } from '../../services/api';
 
 const RepositoriesPage = () => {
 
-  const [currentLanguage, setCurrentLanguage] = useState()
+  const [user, setUser] = useState();
 
-  const user = {
-    login: "JeanSousa",
-    name: "Jean Sousa",
-    avatar_url: "https://avatars.githubusercontent.com/u/38965322?v=4",
-    followers: 0,
-    following: 0,
-    company: null,
-    blog: "https://devsamurai.com.br",
-    location: "Franca - SP",
-  };
+  const [repositories, setRepositories] = useState();
 
-  const repositories = [
-    {
-      id: '1',
-      name: "API_Rest_Laravel",
-      description: 'Descricao',
-      html_url: "https://github.com/JeanSousa/API_Rest_Laravel",
-      language: "PHP"
-    },
-    {
-      id: '2',
-      name: "CarCrmReact",
-      description: 'Descricao',
-      html_url: "https://github.com/JeanSousa/CarCrmReact",
-      language: "Javascript"
-    },
-    {
-      id: '3',
-      name: "fisioSystem",
-      description: 'Descricao',
-      html_url: "https://github.com/JeanSousa/fisioSystem",
-      language: "PHP"
-    },
-    {
-      id: '4',
-      name: "Todo Ruby",
-      description: 'Descricao',
-      html_url: "https://github.com/JeanSousa/fisioSystem",
-      language: "Ruby"
-    },
-    {
-      id: '5',
-      name: "Schedule",
-      description: 'Descricao',
-      html_url: "https://github.com/JeanSousa/fisioSystem",
-      language: "Java"
-    },
-    {
-      id: '6',
-      name: "Todo",
-      description: 'Descricao',
-      html_url: "https://github.com/JeanSousa/fisioSystem",
-      language: "Typescript"
-    },
-    {
-      id: '7',
-      name: "Todo",
-      description: 'Descricao',
-      html_url: "https://github.com/JeanSousa/fisioSystem",
-      language: null
-    },
-  ];
+  const [languages, setLanguages] = useState();
 
-  const languages = getLangsFrom(repositories);
+  const [currentLanguage, setCurrentLanguage] = useState();
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      // getUser();
+
+      const [userResponse, repositoriesResponse] = await Promise.all([
+        getUser('JeanSousa'),
+        getRepos('JeanSousa')
+      ]);
+
+      setUser(userResponse.data);
+
+      setRepositories(repositoriesResponse.data);
+
+      setLanguages(getLangsFrom(repositoriesResponse.data));
+
+      setLoading(false);
+    }
+
+    loadData();
+  }, []);
+
 
   const onFilterClick = (language) => {
     setCurrentLanguage(language);
+  };
+
+  if (loading) {
+    return <Loading>Carregando...</Loading>;
   }
 
 
