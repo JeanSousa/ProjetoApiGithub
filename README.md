@@ -7,7 +7,7 @@
 
 > Status: Finalizado ⚠️
 
-### O Fisiosystem é uma aplicação web para gestão de pacientes da área de fisioterapia
+### O projeto é uma aplicação web para consultas de repositórios de um usuário consumindo a api do github
 
 ### Funcionalidades 
 + Possui a pesquisa de um usuário no github e busca seus repositorios
