@@ -1,5 +1,10 @@
 <h1> API Github </h1>
 
+![image](https://user-images.githubusercontent.com/38965322/142295327-e871b9df-fc2d-4b80-93bf-fe23da2cca67.png)
+
+![image](https://user-images.githubusercontent.com/38965322/142295373-807f2de6-685c-435a-81f2-baa82734ab3e.png)
+
+
 > Status: Finalizado ⚠️
 
 ### O Fisiosystem é uma aplicação web para gestão de pacientes da área de fisioterapia
